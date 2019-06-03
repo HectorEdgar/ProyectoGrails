@@ -1,0 +1,468 @@
+-telnet
+#config
+line vty 0 1
+password cisco
+login 
+enable password secret
+service password-encryption 
+
+
+telnet 192.168.1.1 
+cisco
+secret
+
+#config 
+service password-encryption 
+
+-nat
+Config
+ip nat insede source static ipOrigen ipDestino
+fa0/0
+ip nat inside
+se2/0
+ip nat outside
+
+*config
+access-list 1 permit 1.0.1.0 0.0.0.255 
+ip nat inside source list 1 interface se0/0/0 overload
+*interface fa0/0
+ip nat inside
+*interface se0/0/0
+ip nat outside
+
+
+nat dinamica
+#config
+ip nat pool 1 2.0.0.10 2.0.0.20 netmask 255.255.255.0
+access-list 1 permit 1.0.0.0 0.0.0.255
+ip nat inside source list 1 pool 1
+#fa0/0
+ip nt inside
+#se0/0/0
+ip nat outside
+
+configurar switch capa 3
+
+-vlans en switch
+-intfa0/24 
+no switchport
+int-/1-23
+switchport access vlan 3
+
+interface vlan 2
+ip adress 10.0.7.254 255.255.252.0
+no shutdown 
+ip routing
+
+
+se pone en fa0/0 ip para serial y luego se rutea.
+
+
+--vlan 2 lleguen a la vlan 4 pero no a la vlan 3
+access-list 101 permit ip 10.0.4.0 0.0.3.255 11.4.0.0 0.3.255.255   
+access-list 101 deny ip any any
+interface vlan 2 
+ip access-group 101 in-out
+
+access-list 101 permit ip 10.0.4.0 0.0.3.255 12.0.16.0 0.0.15.255
+access-list 101 deny ip any any
+interface vlan 2 
+ip access-group 101 in-out
+
+v5 accese a web v2 resto negado
+
+access-list 101 permit 
+
+
+--niegue las entrantes y admita las de ella
+access-list 102 permit ip 16.0.0.0 0.0.0.255 any
+access-list 102 deny ip any any
+
+interface vlan 1
+ip access-group 102 in
+
+
+
+
+access-list 103 deny ip any 16.0.0.0 0.0.0.255
+
+interface vlan 1
+ip access-group 103 out
+
+no ip access-group 102 in
+exit
+no access-list 102
+
+no ip access-group 103 out
+no access-list 103 
+
+
+access-list 103 deny ip any any
+access-list 101 deny ip any any
+interface vlan 2 
+ip access-group 101 in-out
+
+
+access-list 101 deny ip 16.0.0.0 0.0.0.255 12.0.128.0 0.0.127.255   
+access-list 101 permit ip any any
+
+access-list 102 permit ip any any
+
+interface vlan 2
+ip access-group 102 out
+ip access-group 101 in
+
+
+
+
+
+
+
+no ip access-group 102 out
+no ip access-group 101 in
+exit
+no access-list 101
+no access-list 102
+
+
+
+
+access-list 101 deny ip 16.0.0.0 0.0.0.255 any
+access-list 101 permit ip any any
+
+access-list 102 permit ip 16.0.0.0 0.0.0.255 12.0.128.0 0.0.127.255
+access-list 102 permit ip 12.0.128.0 0.0.127.255 16.0.0.0 0.0.0.255 
+access-list 102 permit ip any any
+
+interface vlan 2
+ip access-group 101 out
+
+
+interface vlan 1
+ip access-group 102 in
+ip access-group 101 out
+
+
+no ip access-group 102 out
+no ip access-group 101 in
+exit
+no access-list 101
+no access-list 102
+
+-telnet
+#config
+line vty 0 1
+password cisco
+login 
+enable password secret
+service password-encryption 
+
+
+telnet 192.168.1.1 
+cisco
+secret
+
+#config 
+service password-encryption 
+
+
+
+
+access-list 101 permit ip 3.0.1.0 0.0.0.255 1.0.0.8 0.0.0.3
+access-list 101 permit ip 3.0.1.0 0.0.0.255 1.0.0.8 0.0.0.3
+access-list 101 deny ip any any
+
+interface vlan 3
+ip access-group 101 in
+
+
+access-list 102 deny ip any any
+
+
+access-list 102 permit ip any any
+
+interface vlan 2
+ip access-group 102 in
+
+
+access-list 104 deny ip 4.0.1.0 0.0.0.255 1.0.0.8 0.0.0.3
+access-list 102 deny ip 2.0.1.0 0.0.0.255 3.0.1.0 0.0.0.255
+access-list 102 deny ip 2.0.1.0 0.0.0.255 2.0.1.0 0.0.0.255
+access-list 102 deny ip 2.0.1.0 0.0.0.255 4.0.1.0 0.0.0.255
+access-list 104 permit ip any any
+
+interface vlan 4
+ip access-group 102 in
+
+
+
+
+
+vlan 10 
+name 10
+exit
+vlan 20 
+name 20
+exit
+vlan 30 
+name 30
+exit
+vlan 40 
+name 40
+exit
+vlan 50 
+name 50
+exit
+vlan 60 
+name 60
+exit
+
+ip route 3.0.0.0 255.252.0.0 200.10.15.5
+ip route 2.0.0.0 255.254.0.0 200.10.15.5
+ip route 1.0.0.0 255.255.240.0 200.10.15.5
+
+
+ip route 10.0.0.0 255.255.255.0 10.0.0.5
+ip route 10.0.0.0 255.255.255.0 10.0.0.10
+
+ip route 3.0.0.0 255.248.0.0 200.10.15.6
+ip route 4.0.0.0 255.255.252.0 200.10.15.6
+ip route 5.0.0.0 255.224.0.0 200.10.15.6
+ip route 10.0.0.0 255.255.255.0 10.0.0.14
+
+ip route 4.0.0.0 255.255.248.0 10.0.0.14
+ip route 5.0.0.0 255.192.0.0 10.0.0.14
+ip route 6.0.0.0 255.254.0.0 10.0.0.14
+
+ip route 4.0.0.0 255.255.248.0 10.0.0.10
+ip route 5.0.0.0 255.192.0.0 10.0.0.10
+ip route 6.0.0.0 255.254.0.0 10.0.0.10
+
+ip route 3.0.0.0 255.252.0.0 10.0.0.9
+ip route 2.0.0.0 255.254.0.0 10.0.0.9
+ip route 1.0.0.0 255.255.240.0 10.0.0.9
+
+ip route 3.0.0.0 255.248.0.0 10.0.0.13
+ip route 4.0.0.0 255.255.252.0 10.0.0.13
+ip route 5.0.0.0 255.224.0.0 10.0.0.13
+
+
+
+
+
+
+access-list 101 permit tcp  4.0.4.0 0.0.1.255 6.1.0.0 0.0.255.255 eq 80
+access-list 101 permit tcp  4.0.4.0 0.0.1.255 6.1.0.0 0.0.255.255 eq 443
+access-list 101 permit tcp  4.0.2.0 0.0.1.255 6.1.0.0 0.0.255.255 eq 80
+access-list 101 permit tcp  4.0.2.0 0.0.1.255 6.1.0.0 0.0.255.255 eq 443
+access-list 101 permit ip 4.0.4.0 0.0.1.255 4.0.2.0 0.0.1.255
+access-list 101 deny ip any any
+
+interface fa0/0.40
+ip access-group 101 in
+
+
+access-list 102 permit tcp 6.1.0.0 0.0.255.255 4.0.4.0 0.0.1.255 eq 80
+access-list 102 permit tcp 6.1.0.0 0.0.255.255 4.0.4.0 0.0.1.255 eq 443
+access-list 102 permit icmp 6.1.0.0 0.0.255.255 4.0.4.0 0.0.1.255 
+access-list 102 permit ip 6.1.0.0 0.0.255.255 4.0.4.0 0.0.1.255 
+access-list 102 deny ip any any
+
+interface fa0/0.60
+ip access-group 102 in
+
+
+access-list 103 permit ip 5.32.0.0 0.15.255.255 5.16.0.0 0.15.255.255  
+access-list 103 deny ip any any
+
+
+interface fa0/0.50 
+ip access-group 103 in
+
+
+ip nat inside source static 3.4.0.23 10.0.0.6 
+
+
+access-list 101 permit ip 1.0.8.0 0.0.7.255 1.0.15.0 0.0.7.255 
+access-list 101 deny ip any any
+
+
+access-list 102 permit ip 3.2.0.0 0.1.255.255 3.4.0.0 0.1.255.255
+access-list 102 permit ip 3.2.0.0 0.1.255.255 200.10.15.4 0.0.0.3 
+access-list 102 deny ip any any 
+
+interface vlan 30 
+ip access-group 102 in 
+
+
+
+access-list 101 permit ip  3.4.0.0 0.1.255.255 3.2.0.0 0.1.255.255
+access-list 101 permit ip  3.4.0.0 0.1.255.255 200.10.15.4 0.0.0.3 
+access-list 101 deny ip any any
+
+interface fa0/0.30 
+ip access-group 101 in
+
+access-list 102 permit ip 4.0.2.0 0.0.1.255 4.0.4.0 0.0.1.255
+access-list 102 deny ip any any
+
+interface fa0/0.40 
+ip access-group 102 in
+
+
+access-list 103 permit ip 5.16.0.0 0.15.255.255 5.32.0.0 0.15.255.255
+access-list 103 deny ip any any
+
+interface fa0/0.50 
+ip access-group 103 in
+
+
+
+
+access-list 105 permit ip  5.32.0.0 0.15.255.255 5.16.0.0 0.15.255.255
+access-list 105 deny ip any any
+
+interface fa0/0.50 
+ip access-group 105 in
+
+
+
+
+
+---
+vlan 20 
+name recursosmateriales
+exit
+vlan 30
+name finanzas
+exit
+vlan 40
+name 40
+exit
+vlan 50
+name 50
+exit
+
+
+
+access-list 101 permit ip 20.0.32.0 0.0.31.255 30.0.4.4 255.255.254.0
+access-list 101 permit ip 20.0.32.0 0.0.31.255 20.0.64.0 0.0.31.255
+access-list 101 permit ip 20.0.32.0 0.0.31.255 20.0.96.0 0.0.31.255
+access-list 101 permit ip 20.0.32.0 0.0.31.255 20.0.128.0 0.0.31.255
+access-list 101 permit ip 20.0.32.0 0.0.31.255 200.19.18.176 0.0.0.7
+access-list 101 permit ip host 0.0.0.0 host 255.255.255.255
+access-list 101 deny ip any any
+
+
+interface vlan 20 
+ip access-group 101 in
+
+access-list 102 permit ip 30.0.2.0 0.0.1.255 30.0.4.0 0.0.1.255
+access-list 102 permit ip 30.0.2.0 0.0.1.255 30.0.6.0 0.0.1.255
+access-list 101 permit ip 30.0.2.0 0.0.1.255 200.19.18.176 0.0.0.7
+access-list 102 permit ip host 0.0.0.0 host 255.255.255.255
+access-list 102 deny ip any any
+
+
+interface vlan 30 
+ip access-group 102 in
+
+
+
+access-list 101 permit tcp 30.0.4.0 0.0.1.255 30.0.2.3 255.255.254.0 eq 443
+access-list 101 deny ip 30.0.4.0 0.0.1.255 30.0.2.3 255.255.254.0
+access-list 101 permit ip 30.0.4.0 0.0.1.255 30.0.2.0 0.0.1.255
+access-list 101 permit ip 30.0.4.0 0.0.1.255 30.0.6.0 0.0.1.255
+access-list 101 permit ip 30.0.4.0 0.0.1.255 200.19.18.176 0.0.0.7
+access-list 101 permit ip host 0.0.0.0 host 255.255.255.255
+access-list 101 deny ip any any
+
+interface fa0/0.30
+ip access-group 101 in
+
+
+
+access-list 102 permit ip 50.0.8.0 0.0.7.255 50.0.16.0 0.0.7.255
+access-list 102 permit ip 50.0.8.0 0.0.7.255 200.19.18.176 0.0.0.7
+access-list 102 permit ip host 0.0.0.0 host 255.255.255.255
+access-list 101 deny ip any any
+
+interface fa0/0.50
+ip access-group 102 in
+
+
+access-list 103 permit ip 40.2.0.0 0.1.255.255 40.4.0.0 0.1.255.255
+access-list 103 permit ip 40.2.0.0 0.1.255.255 200.19.18.176 0.0.0.7
+access-list 103 permit ip host 0.0.0.0 host 255.255.255.255
+access-list 103 deny ip any any
+
+interface fa0/0.40
+ip access-group 103 in
+
+
+
+access-list 101 permit ip 20.0.64.0 0.0.1.255 20.0.32.0 0.0.1.255
+access-list 101 permit ip 20.0.64.0 0.0.1.255 20.0.96.0 0.0.1.255
+access-list 101 permit ip 20.0.64.0 0.0.1.255 20.0.128.0 0.0.1.255
+access-list 101 permit ip 20.0.64.0 0.0.1.255 200.19.18.176 0.0.0.7
+access-list 101 permit ip host 0.0.0.0 host 255.255.255.255
+access-list 101 deny ip any any
+
+interface fa0/0.20 
+ip access-group 101 in
+
+
+
+
+access-list 102 permit ip 30.0.6.0 0.0.1.255 30.0.2.0 0.0.1.255
+access-list 102 permit ip 30.0.6.0 0.0.1.255 30.0.4.0 0.0.1.255
+access-list 102 permit ip 30.0.6.2 255.255.254.0 any
+access-list 102 permit ip 30.0.6.0 0.0.1.255 200.19.18.176 0.0.0.7
+access-list 102 permit ip host 0.0.0.0 host 255.255.255.255
+access-list 102 deny ip any any
+
+interface fa0/0.30 
+ip access-group 102 in
+
+
+access-list 104 permit ip 50.0.16.0 0.0.7.255 50.0.8.0 0.0.7.255
+access-list 104 permit ip 40.4.0.0 0.1.255.255 200.19.18.176 0.0.0.7
+access-list 104 permit ip host 0.0.0.0 host 255.255.255.255
+access-list 104 deny ip any any
+
+interface fa0/0.50 
+ip access-group 104 in
+
+
+
+
+access-list 101 permit ip 20.0.96.0 0.0.31.255 20.0.32.0 0.0.31.255
+access-list 101 permit ip 20.0.96.0 0.0.31.255 20.0.64.0 0.0.31.255
+access-list 101 permit ip 20.0.96.0 0.0.31.255 20.0.128.0 0.0.31.255
+access-list 101 permit ip 20.0.96.0 0.0.31.255 30.0.6.2 255.255.254.0
+access-list 101 permit ip host 0.0.0.0 host 255.255.255.255
+access-list 101 deny ip any any
+
+interface fa0/1.20
+ip access-group 101 in
+
+access-list 102 permit ip 20.0.128.0 0.0.31.255 20.0.32.0 0.0.31.255
+access-list 102 permit ip 20.0.128.0 0.0.31.255 20.0.64.0 0.0.31.255
+access-list 102 permit ip 20.0.128.0 0.0.31.255 20.0.96.0 0.0.31.255
+access-list 102 permit ip 20.0.128.0 0.0.31.255 30.0.6.2 255.255.254.0
+access-list 102 permit ip host 0.0.0.0 host 255.255.255.255
+access-list 102 deny ip any any
+
+interface fa0/0.20
+ip access-group 102 in
+
+
+
+
+
+
+
+telephony-service
+max-ephones 2
+max-dn 2
+ip source-address 172.22.1.107

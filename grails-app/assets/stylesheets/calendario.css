@@ -1,0 +1,177 @@
+
+
+@-ms-viewport {
+  width: device-width;
+}
+
+
+@media (min-width: 768px) {
+  #calendario{
+    width:360px;
+    height:450px;
+    border-radius:10px;
+    margin:auto;
+    left: 1%;
+    top: 95%;
+    padding-top:10px;
+    position: static;
+  }
+}
+
+
+@media (min-width: 1300px) {
+  #calendario{
+    width:360px;
+    height:450px;
+    border-radius:10px;
+    margin:auto;
+    left: 1%;
+    top: 1%;
+    padding-top:10px;
+    position: relative;
+  }
+}
+@media (min-width: 1500px) {
+  #calendario{
+    width:360px;
+    height:450px;
+    border-radius:10px;
+    margin:auto;
+    left: 1%;
+    top: 1%;
+    padding-top:10px;
+    position: relative;
+  }
+}
+
+
+#mes{
+  width:350px;
+  margin-left:10px;
+  border-style: solid 1px;
+  border-radius: 10px;
+}
+
+.dia{
+  height:40px;
+  width:40px;
+  border-radius:10px;
+  background-color:#f2f2f2;
+  border-top:1px solid white;
+  border-bottom:2px solid white;
+  display:inline-block;
+  margin-right:10px;
+  margin-top:10px;
+}
+
+.fechaFinal{
+  height:40px;
+  width:40px;
+  border-radius:15px;
+  background-color:#ff3333;
+  border-top:1px solid white;
+  border-bottom:2px solid white;
+  display:inline-block;
+  margin-right:10px;
+  margin-top:10px;
+}
+
+.terminada{
+  height:40px;
+  width:40px;
+  border-radius:15px;
+  background-color:#27AE60;
+  border-top:1px solid white;
+  border-bottom:2px solid white;
+  display:inline-block;
+  margin-right:10px;
+  margin-top:10px;
+}
+
+.inactiva{
+  height:40px;
+  width:40px;
+  border-radius:15px;
+  background-color:#85929E;
+  border-top:1px solid white;
+  border-bottom:2px solid white;
+  display:inline-block;
+  margin-right:10px;
+  margin-top:10px;
+}
+
+.actual{
+  height:40px;
+  width:40px;
+  border-radius:15px;
+  background-color:#3498DB;
+  border-top:1px solid white;
+  border-bottom:2px solid white;
+  display:inline-block;
+  margin-right:10px;
+  margin-top:10px;
+}
+
+.enProgreso{
+  height:40px;
+  width:40px;
+  border-radius:15px;
+  background-color:#F4D03F;
+  border-top:1px solid white;
+  border-bottom:2px solid white;
+  display:inline-block;
+  margin-right:10px;
+  margin-top:10px;
+}
+
+.nulos {
+  height:40px;
+  width:40px;
+  display:inline-block;
+  margin-right:10px;
+  margin-top:10px;
+  }
+
+.num{
+  text-align:center;
+  font-size:18px;
+  color:black;
+  display: inline-flex;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#etiquetas{
+  width:360px;
+  height:15px;
+  text-align:center;
+  margin-left:3px;
+}
+
+.semana{
+  height:20px;
+  width:40px;
+  border-bottom:2px solid white;
+  background-color:#cccccc;
+  display:inline-block;
+  margin-right:6px;
+  font-size:15px;
+  text-align:center;
+  font-family: 'Open Sans', sans-serif;
+  border-radius:5px;
+}
+
+.blanco{
+  text-align:center;
+  font-size:18px;
+  color:white;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#mesActual1{
+  height:8px;
+  margin-right:10px;
+  text-align:right;
+  font-size:16px;
+  font-family: 'Open Sans', sans-serif;
+  color:#ff3333;
+}

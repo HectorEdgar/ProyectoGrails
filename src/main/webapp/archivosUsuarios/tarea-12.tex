@@ -1,0 +1,967 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\renewcommand{\baselinestretch}{1.5}
+\author{Ambos}
+\title{}
+\date{12 de agosto del 2017}
+\begin{document}
+\begin{titlepage}
+\begin{center}
+\vspace*{-1in}
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=8cm]{/home/mrhe/Descargas/img1.jpg}
+\end{center}
+\end{figure}
+
+UNIVERSIDAD LA SALLE OAXACA\\
+\vspace*{0.15in}
+ESCUELA DE INGENIERÍAS \\
+\vspace*{0.6in}
+\begin{large}
+PROYECTO\\
+\end{large}
+\vspace*{0.2in}
+\begin{Large}
+\textbf{SISTEMA DE CONTROL DE ACTIVIDADES EN EL TRABAJO} \\
+\end{Large}
+\vspace*{0.3in}
+\begin{large}
+Desarollo de Software\\
+\end{large}
+\vspace*{0.3in}
+\rule{80mm}{0.1mm}\\
+\vspace*{0.1in}
+\begin{large}
+Presentado por: \\ 
+
+Hector Edgar Matias Rodríguez \\
+Yu Ban Mena Zabala \\
+\end{large}
+\end{center}
+
+\end{titlepage}
+
+
+\tableofcontents % indice de contenidos
+
+\cleardoublepage
+%\addcontentsline{toc}{chapter}{Lista de figuras} % para que aparezca en el indice de contenidos
+%\listoffigures % indice de figuras
+
+%\cleardoublepage
+%\addcontentsline{toc}{chapter}{Lista de tablas} % para que aparezca en el indice de contenidos
+%\listoftables % indice de tablas
+%\maketitle
+
+
+
+\section {Introducción}
+
+\subsection{Descripción General del Proyecto}
+Los altos ejecutivos que administran empresas de alto nivel así como aquellos jefes de departamento de oficinas gubernamentales y federales manejan altas cantidades de información y delegan a sus trabajadores diversos trabajos o tareas que al final constituyen la finalización de metas y objetivos propias de la empresa. Los medios de comunicación interna como el correo electrónico permiten el envio de archivos digitales a los destinatarios que se deseen, sin embargo resulta casi nulo el monitoreo de las actividades que desempeña cada trabajador dentro de su área de trabajo.\\
+El proyecto que se ha escogido desarrollar dentro de la clase Desarrollo de Software I, consiste en una aplicación para plataforma web donde se pueda realizar la gestion y monitoreo del trabajo asignado los empleados por los altos ejecutivos de una empresa.
+\\
+
+La aplicación web tendrá las capacidades de dar de alta a los directivos así como jefes de equipo y trabajadores. Los directivos tendrán asignados a los jefes de equipo y los jefes de equipo tendrán asignados a los trabajadores. Los directivos pueden asignarle tareas o actividades a los jefes de equipo y los jefes de equipo pueden crear sub-actividades para asignarle a los trabajadores, también podrán ver el porcentaje de cumplimiento de sus tareas que tienen asignadas junto con sus trabajadores
+\\
+\\
+Los directivos podrán ver el porcentaje de cumplimiento de las actividades que asignó y podrá ver quienes están realizando las sub-actividades así como el porcentaje de cumplimiento de cada una de las subactividades y  también el porcentaje de cumplimiento de toda la actividad así como también el tiempo restante de la actividad.
+\\
+\\
+Cuando los trabajadores envíen un archivo para revisión, los jefes de equipo podrán descargar el archivo y rechazar o aceptar la finalización de la subactividad añadiendo un respectivo comentario.
+Los jefes de equipo pueden enviar archivos a los directivos una vez que la actividad este terminada.
+\\
+\\
+Los trabajadores pueden vizualizar las actividades que les fueron asignadas así como el tiempo sugerido de entrega disponible que tiene para realizar la actividad. Cuando el trabajador termine de realizar la actividad podrá enviar los archivos necesarios  para que lo evalue el lider del equipo y si no cumple con los requisitos necesarios se le notificara que no cumplio con los requisitos de la actividad con un comentario.
+\\
+\\
+Las actividades pueden contener archivos. 
+Las actividades contiene sub-actividades. Las sub-actividades puede contener archivos.
+\\
+Cuando la actividad haya sido completada por los trabajadores y aprovada por el jefe de equipo, este último podrá enviar el resultado final al directivo esperando ser aprovado.
+\\
+El directivo recibe el resultado final y este puede aprovarlo o rechazarlo, dando retroalimentacion respecto al resultado obtenido.
+De esta forma se ofrece una plataforma que ayuda a eficientar el proceso de comunicación entre empleados, jefes de proyecto y a su vez con los jefes o dueños directos de cualquier tipo de empresa.
+\\
+\\
+\subsection {Objetivos}
+\subsubsection { Objetivo general}
+\begin{enumerate}
+\item Crear una aplicación web que gestione y monitorice las actividades de los trabajadores de una empresa.
+\end{enumerate}
+\subsubsection {Objetivos específicos}
+\begin{enumerate}
+\item Gestionar las actividades de los trabajadores.
+\item Organizar las actividades de los trabajadores.
+\item Controlar las fechas de entrega de las actividades.
+\item Disminuir el tiempo de asignación de las actividades. 
+\item Eficientar la comunicación entre empleados,jefes de proyecto y directivos.
+\end{enumerate}
+
+\subsection {Alcance del proyecto}
+El alcance del proyecto será cubrir los modulos de CRUD de directivos, jefes de equipo y trabajadores, también la asignación de trabajadores a los jefes de equipo y los jefes de equipo alos directivos, así como también los modulos de vizualización y gestión de las actividades y sub-actividades asignadas a los trabajadores y alos jefes de equipo. Las funcionalidades que se cubrirán de manera detallada se explican en la seccion Funcionales
+
+\subsection{Tecnologías a utilizar}
+\subsubsection{Tecnologías del lado del servidor}
+\begin{enumerate}
+\item Java 1.8
+\item MySql
+\end{enumerate}
+\subsubsection{Tecnologias del lado del cliente}
+\begin{enumerate}
+\item HTML
+\item CSS
+\item JS
+\end{enumerate}
+\subsubsection{Entorno de ejecución}
+La aplicacón estará programada para poder ejecutarse en los navegadores chrome 
+\subsubsection{Entorno de desarrollo}
+La aplicación será desarrollada en el sistema operativo Linux y con el IDE eclipse.
+
+\subsection{Metodología de desarrollo}
+Para el desarrollo de la aplicación se utilizara la metodologia en cascada.
+
+\subsubsection{Análisis y definición de requerimientos.}
+
+''Los servicios, restricciones y metas del sistema se definen a partir de las consultas con los usuarios. Entonces, se definen en detalle y sirven como una especificación del sistema''(Sommerville, 2005, p. 62).
+
+\subsubsection{Diseño del sistema y del software.}
+
+El proceso de diseño del sistema divide los requerimientos en sistemas hardware o software. Establece una arquitectura completa del sistema. El diseño del software identifica y describe las abstracciones fundamentales del sistema. El diseño del software identifica y describe las abstracciones fundamentales del sistema software y sus relaciones.(Sommerville, 2005, p. 62).
+
+
+\subsubsection{Implementación y prueba de unidades.}
+''Durante esta etapa, el diseño del software se lleva a cabo como un conjunto o unidades de programas. La prueba de unidad implica verificar que cada una cumpla su especificació''(Sommerville, 2005, p. 62).
+
+\subsubsection{Programación de la aplicación.}
+
+\subsubsection{Integración y prueba del sistema.}
+''Los programas o las unidades individuales de programas se integran y prueban como un sistema completo para asegurar que se cumplan los requerimientos del software. Después de las pruebas, el sistema software se entrega al cliente''(Sommerville, 2005, p. 62).
+
+\subsubsection{Funcionamiento y mantenimiento.}
+Por lo general (aunque no necesariamente), ésta es la fase más larga del ciclo de vida. El sistema se instala y se pone en funcionamiento práctico. El mantenimiento implica corregir errores no descubiertos en las etapas anteriores del ciclo de vida, mejorar la implementación de las unidades del sistema y resaltar los servicios del sistema una vez que se descubren nuevos requerimientos.(Sommerville, 2005, p. 62).
+
+\subsection{Cronograma}
+
+
+\section{Funcionales}
+\subsection{Requerimientos Funcionales}
+\begin{enumerate}
+\item (RE-1)Deberán existir tres tipos de usuario los cuales son: Directivo, Jefe Y Trabajador, cada uno con diferente acceso a funcinalidades dentro del sistema
+\item (RE-2)Para acceder al sistema todos los usuarios tendran una pantalla de acceso con credenciales(login)
+\item (RE-3)El usuario Administrador podrá crear directivos así como jefes de equipo y trabajadores
+\item (RE-4)El usuario Administrador podrá borrar y modificar datos sobre directivos jefes de equipo y trabajadores
+\item (RE-5)Los directivos pueden crear jefes de equipo 
+\item (RE-6)los jefes de equipo pueden crear trabajadores. 
+\item (RE-7)Los directivos pueden asignarle tareas o actividades a los jefes de equipo con tiempo de entrega
+\item (RE-8)Los jefes de equipo pueden crear sub-actividades para asignarle a los trabajadores con tiempo de entrega
+\item (RE-9)Todos los usuarios deberán ver el porcentaje de cumplimiento de sus tareas que tienen asignadas y del personal a su cargo
+\item (RE-10)Los trabajadores pueden enviar archivos a sus jefes de equipo
+\item (RE-11)Los Jefes de equipo pueden enviar archivos a sus directivos
+\item (RE-12)Los directivos pueden descargar aceptar o rechazar los archivos
+\item (RE-13)Los directivos pueden añadir comentarios de retroalimentación a las entregas por parte de sus jefes de equipo
+\item (RE-14)Los Jefes de equipo pueden añadir comentarios de retroalimentacion a las entregas de sus trabajadores
+\item (RE-15)Los trabajadores pueden enviar comentarios a sus entregas de trabajo
+\item (RE-16)Los trabajadores deben visualizar el tiempo de entrega 
+\item (RE-17)Las actividades pueden contener archivos
+\item (RE-18)Las actividades contienen sub-actividades
+\item (RE-19)Las sub-actividades puede contener archivos
+\item (RE-20)El trabajador podrá visualizar un calendario con fechas estimadas de entrega de trabajo
+\item (RE-21)Todos los usuarios tendran la opción de cerrar su sesión
+
+
+\end{enumerate}
+
+
+\subsection{Requerimientos No Funcionales}
+\begin{enumerate}
+\item El sistema a desarrollar deberá ser multiplataforma, es decir correr en 
+diversos sistemas operativos.
+\item El sistema deberá ser desarrollado con tecnologias WEB
+\item El sistema debera tener una base de datos relacional
+\item Toda funcionalidad del sistema deberá ser capaz de operar con el minimo tiempo de respuesta
+\item Todas las funcionalidades del sistema estarán disponibles para el usuario Administrador
+\item El sistema debera ser desarrollado aplicando técnicas y patrones de programación que incrementen
+la seguridad de los datos
+\item El tiempo de aprendizaje del sistema por un usuario debera ser menor a 5 horas.
+\item El sistema debe contar con manuales de usuario
+\item El sistema debe tener controles de entrada para captar errores
+\item EL sistema debe contener mensajes de error que sean informativos y orientados al usuario final
+\item El sistema debe tener interfaz grafica bien formada, amigable e intuitiva para su fácil uso
+\end{enumerate}
+
+\section{Interfaz de Usuario}
+\subsection{Pantalla de Inicio}
+La pantalla de inicio de sesión tendrá un formulario centrado en el cual se encontrarán las cajas de captura de usuario y contraseña
+así como un botón que dirá Iniciar sesión. Se muestran logotipo y nombre de la empresa así como el nombre de la aplicación.
+\subsection{Pantalla Usuario Administrador}
+Se muestra un menú donde puede ver las siguientes opciones:
+\begin{enumerate}
+\item Agregar Nueva Cuenta de Directivo: Aparece el formulario con campos a rellenar. Existe un boton "Registrar"
+\item Ver Cuentas de Directivos: Aparece una lista con todos los directivos. Si se da click sobre uno, aparece un vista con el detalle de los datos de cada uno.
+\item Editar/Eliminar Cuenta de Directivos: Aparece una lista con todos los directivos.En las ultimas columnas se encuentran los botones editar/eliminar
+\end{enumerate}
+\subsection{Pantalla Usuario Directivo}
+Se muestra un menú donde puede ver las siguientes opciones:
+\begin{enumerate}
+\item Agregar Nueva Cuenta de Jefe de equipo: Aparece el formulario con campos a rellenar. Existe un boton "Registrar"
+\item Ver Cuentas de Jefe de equipo: Aparece una lista con todos los Jefes de Equipo. Si se da click sobre uno, aparece un vista con el detalle de los datos de cada uno.
+\item Editar/Eliminar Cuenta de Jefe de equipo: Aparece una lista con todos los Jefes de Equipo.En las ultimas columnas se encuentran los botones editar/eliminar
+
+\item Agregar Nueva Cuenta de Trabajador: Aparece el formulario con campos a rellenar. Existe un boton "Registrar"
+\item Ver Cuentas de Trabajador:Aparece una lista con todos los trabajadores.En las ultimas columnas se encuentran los botones editar/eliminar
+\item Editar/Eliminar Cuenta de Trabajador: Aparece una lista con todos los trabajadores.En las ultimas columnas se encuentran los botones editar/eliminar
+\item Crear Actividades: Aparece una lista con todos los Jefes de equipo y al seleccionar uno apareceran una nueva ventana en donde se puede crear una actividad y agregarle archivos por medio de un boton que dira subir archivos
+\end{enumerate}
+\subsection{Pantalla Usuario Jefe de Equipo}
+\begin{enumerate}
+\item Agregar Nueva Cuenta de Trabajador: Aparece el formulario con campos a rellenar. Existe un boton "Registrar"
+\item Ver Cuentas de Trabajador: Aparece una lista con todos los trabajadores. Si se da click sobre uno, aparece un vista con el detalle de los datos de cada uno.
+\item Editar/Eliminar Cuenta de Trabajador: Aparece una lista con todos los trabajadores.En las ultimas columnas se encuentran los botones editar/eliminar
+\item Crear Subactividades: Aparece una lista con todos los trabajadores del jefe de equipo y al seleccionar uno se mostrara una nueva ventana en donde se pueda crear la subactividad y agregarle archivos por medio de unm boton que dira subir archivos.
+\end{enumerate}
+
+\subsection{Pantalla Usuario Trabajador}
+\begin{enumerate}
+\item Aparece un botón con "Ver actividades Asignadas". Al dar click en esta opción te manda a una vista con una lista desplegada con las actividades ordenadas por fecha de entrega.
+\item Al seleccionar una actividad dentro de la lista se redirecciona a una vista con el detalle de dicha subactividad seleccionada.(descripción, archivos unidos a la subactividad, fecha de entrega y las opciones para enviar el archivo resultado)
+
+\end{enumerate}
+
+
+\section{Interfaces con otro Software y Hardware}
+La aplicación web utilizara distintas tecnologias para su funcionamiento. En la ingeniería de software se denomina aplicacion web a aquellas herramientas que los usuarios pueden utilizar accediendo a un servidor web a través de Internet o de una intranet mediante un navegador. Se desarrolla mediante la interpretación de un lenguaje soportado por un navegador de paginas de internet.
+\\
+Es por ello que para hacer uso de este aplicativo se necesitan los siguientes software o programas:
+\begin{enumerate}
+\item Navegador Google Chrome en su versión actualizada 2017
+\item Servidor basado en APACHE TOM CAT para desplegar la aplicación desarrollada en Java
+\end{enumerate}
+El sistema web a desarrollar hace uso de los siguientes dispositivos externos:
+\begin{enumerate}
+\item Mouse/Ratón
+\item Teclado 
+\end{enumerate}
+\section{Confiabilidad}
+La habilidad que tiene un sistema o componente de realizar sus funciones requeridas bajo condiciones específicas en periodos de tiempo determinados se denomina confiabilidad.También se le puede llamar así a la probabilidad o la capacidad de que un sistema de funciones trabajen sin falla en un periodo de tiempo y bajo condiciones o un medio ambiente también especifico.
+\subsection{Factores de confiabilidad}
+\begin{enumerate}
+\item Disponibilidad: El sistema deberá estar disponible en todo momento, en que los directivos, jefes de proyecto y trabajadores lo requieran.
+\item Fiabilidad: El sistema suministrará su servicio de forma continua sin interrupciones ni intermitencias que afecten su uso .
+\item Seguridad: El sistema contará con medidas de seguridad para acceder a datos personales y contraseñas.
+\item Confidencialidad: EL sistema solo trabajará con datos de manera interna. No se enviarán a ningún otro lado que no sea la aplicación propia.
+\item Integridad: El sistema arrojará resultados íntegros que concuerden con los datos reales o credenciales físicas.
+\item Mantenibilidad: El sistema será desarrollado y documentado para que sea apto para reparaciones y modificaciones futuras que adapten las funciones a las necesidades que vayan surgiendo.
+\end{enumerate}
+Para que el sistema se catalogue confiable se asegurará:
+\begin{enumerate}
+\item El sistema realizará las funciones que le han sido programas cuando el usuario lo requiera.
+\item El sistema tiene tolerancia a fallos. Fallos de software, en cuanto a código mal escrito o algoritmos incorrectos.
+\end{enumerate}
+
+\subsection{Pruebas de Confiabilidad}
+Para asegurar esta confiabilidad se realizarán pruebas de estrés, las cuales consistirán en la simulación de grandes cargas de trabajo para observar la forma de comportarse del sistema ante situaciones de uso intenso. Se aplicarán pruebas de destrucción aleatoria(entrada de datos de entrada aleatorios), de bloqueo con el fin de mejorar la calidad de la aplicación móvil y corregir dichos errores.
+
+\section{Diagramas de secuencia}
+Diagrama del flujo de la aplicación:
+\\
+
+\begin{figure}[htb]
+\begin{center}
+\caption{Diagrama de Login}
+\includegraphics[width=12cm]{/home/mrhe/Descargas/diagramas1.png}
+\end{center}
+\end{figure}
+
+\cleardoublepage
+\section{Diagramas de casos de uso}
+Diagramas de caso de uso:
+\\
+\begin{figure}[htb]
+\begin{center}
+\caption{Caso de uso de Login}
+
+\includegraphics[width=8cm]{/home/mrhe/Descargas/Diagrama2.png}
+
+\end{center}
+\end{figure}
+\begin{figure}[htb]
+\begin{center}
+\caption{Casos de uso de Directivo}
+\includegraphics[width=8cm]{/home/mrhe/Descargas/Diagrama4.png}
+\includegraphics[width=8cm]{/home/mrhe/Descargas/Diagrama5.png}
+\end{center}
+\end{figure}
+\begin{figure}[htb]
+\begin{center}
+\caption{Casos de uso de Jefe de equipo}
+\includegraphics[width=8cm]{/home/mrhe/Descargas/Diagrama3.png}
+\includegraphics[width=8cm]{/home/mrhe/Descargas/Diagrama6.png}
+
+\end{center}
+\end{figure}
+
+\begin{figure}[htb]
+\begin{center}
+\caption{Casos de uso de Jefe de Trabajador}
+\includegraphics[width=8cm]{/home/mrhe/Descargas/Diagrama7.png}
+
+\end{center}
+\end{figure}
+
+\cleardoublepage
+\cleardoublepage
+
+\section{Casos de Uso}
+\subsection{Actores}
+\begin{enumerate}
+\item Administrador: Actor con privilegios de creación globales y acceso total a las funcionalidades del sistema.
+
+
+\item Directivo: Actor con los siguientes privilegios: 
+\\Iniciar y Cerrar Sesión
+\\Crear y Gestionar actividades
+\\Crear y Gestionar jefes de equipo
+\\Aprobar o rechazar actividades encomendadas
+\\Visualizar actividades asignadas
+
+\item Jefe de Equipo: Actor con los siguientes privilegios: 
+\\Iniciar y Cerrar Sesión
+\\Crear y Gestionar subactividades
+\\Crear y Gestionar trabajadores
+\\Enviar archivos para revisión al directivo perteneciente a una actividad
+\\Revisar subactividades asignadas
+\\Revisar, aprobar o rechazar subactividades encomendadas
+\\Visualizar actividades asignadas
+
+\item Trabajador:Actor con los siguientes privilegios: 
+\\Iniciar y Cerrar Sesión
+\\Enviar archivos para revisión al jefe de equipo perteneciente a una subactividad
+\\Visualizar subactividades asignadas 
+
+\end{enumerate}
+
+\subsection{Descripción de Casos de Uso}
+
+\begin{tabular}[c]{|p{3cm}|p{13cm}|p{2.5cm}|p{3cm}|}
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Id & CU - 1 \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Caso de uso: & Inicio de sesión. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Prioridad & Alta. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Actores: & Administrador, Directivo, Jefe de equipo, Trabajador. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Descripción: & Entrada al sistema a través de un usuario y contraseña.\\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Pre-condiciones: & Tener una cuenta activa en el sistema. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Flujo de eventos: & \begin{enumerate}
+\item Ingresar usuario.
+\item Ingresar contraseña.
+\item Dar click en el botón "Iniciar sesión".
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Post-condición: & \begin{enumerate}
+\item Creará una sesión en el sistema.
+\item Se redireccionará a la pantalla principal del sistema.
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Excepciones: & Si el actor ingresa una credencial invalida se le mostrara un mensaje de error.\\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Referencias: & RE-2\\ 
+\hline 
+\end{tabular} 
+\\
+\begin{tabular}[c]{|p{3cm}|p{13cm}|p{2.5cm}|p{3cm}|}
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Id & CU - 2 \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Caso de uso: & Creación de cuentas del tipo "Jefe de equipo". \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Prioridad & Alta. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Actores: & Directivo. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Descripción: & El Actor "Directivo" podra crear un jefe de equipo a través de un formulario. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Pre-condiciones: & Iniciar sesión en el sistema con un tipo de usuario "Directivo". \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Flujo de eventos: & \begin{enumerate}
+\item Ingresar Nombre del jefe de equipo.
+\item Ingresar Apellido paterno del jefe de equipo.
+\item Ingresar Apellido materno del jefe de equipo.
+\item Ingresar usuario del jefe de quipo.
+\item Ingresar contraseña del jefe de equipo.
+\item Dar click en el botón "Agregar".
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Post-condición: & \begin{enumerate}
+\item Se agregara una cuenta de tipo "Jefe de equipo" en la base de datos.
+\item La cuenta del Jefe de equipo se vinculara al Directivo en la base de datos.
+\item Se mostrara un mensaje del resultado de la transacción.
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Excepciones: & \begin{enumerate}
+\item Si un campo esta vacio se mostrará un mensaje del error.
+\item Si el usuario ya existe se mostrará un mensaje del error.
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Referencias: & RE-5\\ 
+\hline 
+\end{tabular} 
+\\
+
+
+\begin{tabular}[c]{|p{3cm}|p{13cm}|p{2.5cm}|p{3cm}|}
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Id & CU - 3 \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Caso de uso: & Creación de cuentas del tipo "Trabajador". \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Prioridad & Alta. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Actores: & Jefe de equipo. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Descripción: & El Actor "Jefe de equipo" podra crear un trabajador través de un formulario. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Pre-condiciones: & Iniciar sesión en el sistema con un tipo de usuario "Jefe de equipo". \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Flujo de eventos: & \begin{enumerate}
+\item Ingresar Nombre del trabajador.
+\item Ingresar Apellido paterno del trabajador.
+\item Ingresar Apellido materno del trabajador.
+\item Ingresar usuario del trabajador.
+\item Ingresar contraseña del trabajador.
+\item Dar click en el botón "Agregar".
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Post-condición: & \begin{enumerate}
+\item Se agregara una cuenta de tipo "trabajador" en la base de datos.
+\item La cuenta del trabajador se vinculara al Jefe de equipo en la base de datos.
+\item Se mostrara un mensaje del resultado de la transacción.
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Excepciones: & \begin{enumerate}
+\item Si un campo esta vacio se mostrará un mensaje del error.
+\item Si el usuario ya existe se mostrará un mensaje del error.
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Referencias: & RE-6\\ 
+\hline 
+\end{tabular} 
+\\
+
+
+\begin{tabular}[c]{|p{3cm}|p{13cm}|p{2.5cm}|p{3cm}|}
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Id & CU - 4\\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Caso de uso: &  Creación de actividades.\\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Prioridad & Alta. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Actores: & Directivo.\\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Descripción: & El actor "Directivo" puede crear una actividad a través de un formulario y asignar la actividad a un Jefe de equipo. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Pre-condiciones: & \begin{enumerate}
+\item Iniciar sesión en el sistema con un tipo de usuario "Directivo".
+\item Tener al menos un Jefe de equipo vinculado a la cuenta de Directivo.
+\end{enumerate}  \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Flujo de eventos: & \begin{enumerate}
+\item Ingresar el nombre de la actividad.
+\item Ingresar la descripción de la actividad.
+\item Ingresar la fecha limite de la actividad.
+\item Ingresar la hora limite de la actividad
+\item Seleccionar un Jefe de equipo.
+\item Seleccionar archivos para enviar al presionar el botón agregar archivos.
+\item Dar click en el botón "Agregar".
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Post-condición: & \begin{enumerate}
+\item Se agregará una actividad en la base de datos.
+\item Se vinculara la actividad con la cuenta del tipo "Directivo".
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Excepciones: & \begin{enumerate}
+\item Si el campo de nombre, descripción o jefe de equipo esta vacio se mostrara un mensaje del error.
+\item Si agrega un archivo que acceda tamaño permitido se mostrara un mensaje del error.
+\end{enumerate} \\
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Referencias: & RE-7\\ 
+\hline 
+\end{tabular} 
+\\
+
+\begin{tabular}[c]{|p{3cm}|p{13cm}|p{2.5cm}|p{3cm}|}
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Id & CU - 5\\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Caso de uso: &  Creación de sub-actividades.\\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Prioridad & Alta. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Actores: & Jefe de equipo. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Descripción: & El actor "Jefe de equipo" puede crear una sub-actividad a través de un formulario y asignar la sub-actividad a un trabajador.\\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Pre-condiciones: & \begin{enumerate}
+\item Iniciar sesión en el sistema con un tipo de usuario "Jefe de equipo".
+\item Tener al menos un "Trabajador" vinculado a la cuenta de "Jefe de equipo".
+\end{enumerate}  \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Flujo de eventos: & \begin{enumerate}
+\item Ingresar el nombre de la sub-actividad.
+\item Ingresar la descripción de la sub-actividad.
+\item Ingresar la fecha limite de la sub-actividad.
+\item Ingresar la hora limite de la sub-actividad
+\item Seleccionar un "Trabajador".
+\item Seleccionar archivos para enviar, al presionar el botón "agregar archivos".
+\item Dar click en el botón "Agregar".
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Post-condición: & \begin{enumerate}
+\item Se agregará una sub-actividad en la base de datos.
+\item Se vinculara la sub-actividad con la cuenta del tipo "Jefe de equipo".
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Excepciones: & \begin{enumerate}
+\item Si el campo de nombre, descripción o trabajador esta vacio se mostrará un mensaje del error.
+\item Si se agrega un archivo que exceda el tamaño permitido se mostrara un mensaje del error.
+\end{enumerate} \\
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Referencias: & RE-8\\ 
+\hline 
+\end{tabular} 
+
+
+
+\begin{tabular}[c]{|p{3cm}|p{13cm}|p{2.5cm}|p{3cm}|}
+\hline 
+\rule[-1ex]{0pt}{2.5ex} ID & CU - 6 \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Caso de uso: & Envio de Archivos a Actor.\\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Prioridad & Alta. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Actores: & Jefe de equipo, Trabajador, Administrador.\\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Descripción: & El actor podrá enviar sus trabajos encomendados a través de la interfaz de usuario, examinando los archivos que sean necesarios. Además podrá anexar un texto o comentario de 140 caracteres. 
+ Para realizar la entrega se da un click al botón enviar.\\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex}Precondiciones: & \begin{enumerate}
+\item Tener iniciada una sesión.
+\item Contar con archivos para envío.
+\item Cumplir con el tamaño máximo permitido para archivos.
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Flujo de eventos: & \begin{enumerate} 
+\item Click en botón examinar.
+\item Seleccionar archivo o conjunto de archivos a enviar.
+\item Click en caja de texto.
+\item Escribir comentario de ser necesario.
+\item Click en botón Enviar.
+\end{enumerate}
+\\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} PostCondiciones: & Se muestra un mensaje 
+ de exito en caso de que el proceso haya sido completado correctamente.\\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Excepciones: & \begin{enumerate} 
+\item En caso de ingresar archivos con formato no válido, el sistema arrojará mensaje de error al usuario.
+\item En caso de no adjuntar ningun archivo, el sistema le hará saber su ausencia al usuario.
+\item En caso de no poder hacer realizar envio por cuestiones técnicas internas, el sistema marcará un error específico.
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Referencias: & Este caso de uso satisface los requerimientos: RE-10, RE-11, RE-12, RE-15\\
+\hline 
+\end{tabular} 
+
+
+\begin{tabular}[c]{|p{3cm}|p{13cm}|p{2.5cm}|p{3cm}|}
+\hline 
+\rule[-1ex]{0pt}{2.5ex} ID & CU - 7 \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Caso de uso: & Visualización de Trabajos Entregados.\\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Prioridad & Alta. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Actores: & Directivo, Jefe de equipo, Trabajador.\\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Descripción: & El actor podrá visualizar una lista con datos y archivos que han sido
+entregados para su revisión y aprobación. En esta lista se tienen las opciones aceptar rechazar y descargar. Si se
+da click en aceptar/rechazar se le manda a la pantalla de retroalimentación. Si se da click en el botón descargar, se comienza la descarga directa de ese archivo. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex}Precondiciones: & \begin{enumerate}
+\item Tener iniciada una sesión.
+\item Tener actividades/subactividades encomendadas o delegadas a trabajadores o jefes de equipo.
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Flujo de eventos: & \begin{enumerate} 
+\item Click en Seguimiento de actividades dentro del menú.
+\item Seleccionar opcion dentro de la lista.
+\item Click en el icono correspondiente.
+\end{enumerate}
+\\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} PostCondiciones:& \begin{enumerate}  
+\item Se empieza la descarga directa en el navegador chorme.
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Excepciones: & \begin{enumerate} 
+\item En caso de no contar con actividades encomendadas, la lista se muestra vacía.
+\item En caso de no poder aceptar/rechazar/descargar por cuestiones técnicas internas, el sistema marcará un error específico.
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Referencias: & Este caso de uso satisface los requerimientos: RE-10, RE-11, RE-15\\
+\hline 
+
+\end{tabular} 
+
+
+\begin{tabular}[c]{|p{3cm}|p{13cm}|p{2.5cm}|p{3cm}|}
+\hline 
+\rule[-1ex]{0pt}{2.5ex} ID & CU - 8 \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Caso de uso: & Retroalimentación de Entrega.\\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Prioridad & Alta. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Actores: & Directivo, Jefe de equipo, Administrador\\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Descripción: & El actor podrá mandar un comentario respecto a la entrega recibida directamente al actor que haya enviado el archivos o archivos dentro de una vista especifica donde en una caja de texto podrá escribir la retroalimentación. Para notificar al actor remitente se debe dar click en el botón Notificar. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex}Precondiciones: & \begin{enumerate}
+\item Tener iniciada una sesión.
+\item Tener actividades/subactividades encomendadas o delegadas a trabajadores o jefes de equipo.
+\item Haber rechazado/aceptado dicha actividad.
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Flujo de eventos: & \begin{enumerate} 
+\item Click en icono de aceptar/rechazar.
+\item Escribir retroalimentación.
+\item Click en botón Notificar.
+\end{enumerate}
+\\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} PostCondiciones:& \begin{enumerate}  
+\item Se muestra un mensaje.
+ de exito en caso de que el proceso de notificación haya sido completado correctamente.
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Excepciones: & \begin{enumerate} 
+\item En caso de aceptar la tarea encomendada, no es necesario escribir una retroalimentación.
+\item En caso de rechazar la tarea encomendada, es necesario escribir una retroalimentación.
+\item En caso de no poder aceptar/rechazar/descargar por cuestiones técnicas internas, el sistema marcará un error específico.
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Referencias: & Este caso de uso satisface los requerimientos: RE-13, RE-14\\
+\hline 
+
+\end{tabular} 
+
+
+\begin{tabular}[c]{|p{3cm}|p{13cm}|p{2.5cm}|p{3cm}|}
+\hline 
+\rule[-1ex]{0pt}{2.5ex} ID & CU-9 \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Caso de uso: & Ver Calendario de actividades \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Prioridad & Media. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Actores: & Administrador, Directivo, Jefe de quipo, Trabajador.\\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Descripción: & El actor podrá visualizar un calendario con fechas estimadas para entrega. EL calendario
+consiste en una lista ordenada cronológicamente con el nombre de la tareas asignadas, fecha y hora. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex}Precondiciones: & \begin{enumerate}
+\item Tener iniciada una sesión.
+\item Tener actividades/subactividades asignadas o delegadas a trabajadores o jefes de equipo.
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Flujo de eventos: & \begin{enumerate} 
+\item Click en botón Ver calendario de tareas en menú principal.
+\item Visualización de tareas.
+\end{enumerate}
+\\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} PostCondiciones:& \begin{enumerate}  
+\item Se muestra una lista con las tareas asignadas ordenadas cronologicamente.
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Excepciones: & \begin{enumerate} 
+\item En caso de no contar tareas asignadas, la lista se mostrará vacía.
+
+\item En caso de no visualizar la lista por cuestiones técnicas internas, el sistema marcará un error específico.
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Referencias: & Este caso de uso satisface los requerimientos: RE-20\\
+\hline 
+
+\end{tabular} 
+
+
+\begin{tabular}[c]{|p{3cm}|p{13cm}|p{2.5cm}|p{3cm}|}
+\hline 
+\rule[-1ex]{0pt}{2.5ex} ID & CU - 10 \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Caso de uso: & Cerrar Sesión. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Prioridad & Alta. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Actores: & Administrador, Directivo, Jefe de quipo, Trabajador.\\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Descripción: & El actor podrá cerrar su sesión en caso de que se encuentre ocupando
+equipo de computo de alguien más. AL hacer esto, debe redirigir a la pantalla de inicio de sesión. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex}Precondiciones: & \begin{enumerate}
+\item Tener iniciada una sesión.
+\item No tener procesos pendientes de carga o formularios. incompletos \end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Flujo de eventos: & \begin{enumerate} 
+\item Click en botón Salir en la pantalla del menú.
+\end{enumerate}
+\\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} PostCondiciones:& \begin{enumerate}  
+\item Se muestra un mensaje de confirmación en caso de que el sistema haya eliminado correctamente las varibles de sesión.
+\item Se redirecciona a la pantalla de Inicio de Sesión.
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Excepciones: & \begin{enumerate} 
+\item En caso de tener formularios incompletos, se mostrará un mensaje de confirmación de cierre de sesión.
+
+\item En caso de no poder cerrar la sesión por cuestiones técnicas internas, el sistema marcará un error específico.
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Referencias: & Este caso de uso satisface los requerimientos: RE-21\\
+\hline 
+
+\end{tabular}
+
+
+\begin{tabular}[c]{|p{3cm}|p{13cm}|p{2.5cm}|p{3cm}|}
+\hline 
+\rule[-1ex]{0pt}{2.5ex} ID & CU - 11 \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Caso de uso: & Visualización de Porcentaje de Avance de actividad. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Prioridad & Alta. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Actores: & Directivo, Administrador.\\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Descripción: & El actor podrá visualizar el porcentaje de cumplimiento del
+la actividad creada o asignada.
+Si la actividad es unica, el porcentaje de cumplimiento sera del 100 porcierto. Si existen más subactividades dentro de la actividad, el porcentaje de cumplimiento
+se divide proporcionalmente entre numero de subactividades \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex}Precondiciones: & \begin{enumerate}
+\item Tener iniciada una sesión.
+\item Tener una actividad encomendada.
+\item Tener almenos un jefe de equipo asignado.
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Flujo de eventos: & \begin{enumerate} 
+\item Click en Ver actividades.
+\item Click en porcentaje de actividad .
+\end{enumerate}
+\\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} PostCondiciones:& \begin{enumerate}  
+\item Se muestra un texto con el porcentaje de cumplimiento.
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Excepciones: & \begin{enumerate} 
+\item En caso de no contar con ningún archivo que contribuya al aumento del porcentaje, este se mostrará en 0%.
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Referencias: & Este caso de uso satisface los requerimientos: RE-9\\
+\hline 
+
+\end{tabular} 
+
+
+\begin{tabular}[c]{|p{3cm}|p{13cm}|p{2.5cm}|p{3cm}|}
+\hline 
+\rule[-1ex]{0pt}{2.5ex} ID & CU - 12 \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Caso de uso: & Visualización de Porcentaje de Avance de subactividad. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Prioridad & Alta. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Actores: & Administrador, Jefe de equipo, Trabajador.\\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Descripción: & El actor podrá visualizar el porcentaje de cumplimiento del
+la subactividad creada o asignada.
+Si la subactividad es unica, el porcentaje de cumplimiento sera del 100 porcierto. Si existen más tareas dentro de la subactividad, el porcentaje de cumplimiento
+se divide proporcionalmente entre numero de tareas. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex}Precondiciones: & \begin{enumerate}
+\item Tener iniciada una sesión.
+\item Tener una subactividad encomendada.
+\item Tener almenos un trabajador asignado.
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Flujo de eventos: & \begin{enumerate} 
+\item Click en Ver subactividades.
+\item Click en porcentaje de subactividad.
+\end{enumerate}
+\\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} PostCondiciones:& \begin{enumerate}  
+\item Se muestra un texto con el porcentaje de cumplimiento.
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Excepciones: & \begin{enumerate} 
+\item En caso de no contar con ningún archivo que contribuya al aumento del porcentaje, este se mostrará en 0%.
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Referencias: & Este caso de uso satisface los requerimientos: RE-9\\
+\hline 
+
+\end{tabular} 
+
+
+\begin{tabular}[c]{|p{3cm}|p{13cm}|p{2.5cm}|p{3cm}|}
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Id & CU - 13 \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Caso de uso: & Creación de cuentas a través del actor "Administrador".\\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Prioridad & Alta. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Actores: & Administrador. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Descripción: & El Actor "Administrador" podra crear cuentas de tipo "Directivo", "Jefe de equipo" y "Trabajador" a través de un formulario.\\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Pre-condiciones: & Iniciar sesión en el sistema con un tipo de usuario "Administrador". \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Flujo de eventos: & \begin{enumerate}
+\item Ingresar Nombre.
+\item Ingresar Apellido paterno.
+\item Ingresar Apellido materno.
+\item Ingresar usuario.
+\item Ingresar contraseña.
+\item Seleccionar el tipo de usuario.
+\item Dar click en el botón "Agregar".
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Post-condición: & \begin{enumerate}
+\item Se agregara una cuenta del tipo que se halla seleccionado en la base de datos.
+\item Se mostrara un mensaje del resultado de la transacción.
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Excepciones: & \begin{enumerate}
+\item Si un campo esta vacio se mostrará un mensaje del error.
+\item Si el usuario ya existe se mostrará un mensaje del error.
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Referencias: & RE-3\\ 
+\hline 
+\end{tabular} 
+\\
+
+
+
+\begin{tabular}[c]{|p{3cm}|p{13cm}|p{2.5cm}|p{3cm}|}
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Id & CU - 14 \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Caso de uso: & Modificación y Eliminación de cuentas. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Prioridad & Media. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Actores: & Administrador. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Descripción: & El Actor "Administrador" podra eliminar y modificar cuentas de tipo "Directivo", "Jefe de equipo" y "Trabajador" a través de un formulario. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Pre-condiciones: & Iniciar sesión en el sistema con un tipo de usuario "Administrador". \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Flujo de eventos: & \begin{enumerate}
+\item Ingresar el usuario a eliminar.
+\item Dar click en buscar.
+\item Modificar Nombre.
+\item Modificar Apellido paterno.
+\item Modificar Apellido materno.
+\item Modificar contraseña.
+\item Seleccionar el tipo de usuario.
+\item Dar click en el botón "Eliminar" o en "Modificar".
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Post-condición: & \begin{enumerate}
+\item Se Eliminara o actualizara la cuenta que se halla seleccionado en la base de datos.
+\item Se mostrara un mensaje del resultado de la transacción.
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Excepciones: & \begin{enumerate}
+\item Si un campo esta vacio se mostrará un mensaje del error.
+\item Si no existe el usuario se mostrará un mensaje de error.
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Referencias: & RE-4\\ 
+\hline 
+\end{tabular} 
+\\
+
+
+
+\begin{tabular}[c]{|p{3cm}|p{13cm}|p{2.5cm}|p{3cm}|}
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Id & CU - 15 \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Nombre de caso de uso: & Gestión de cuentas asignadas.\\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Prioridad & Media. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Actores: & Administrador. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Descripción: & El Actor "Administrador" podra agregar/eliminar las cuentas asignadas al "Directivo" y "Jefe de equipo" a través de un formulario. \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Pre-condiciones: & Iniciar sesión en el sistema con un tipo de usuario "Administrador". \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Flujo de eventos: & \begin{enumerate}
+\item Ingresar el usuario a modificar sus asignaciones.
+\item Dar click en buscar.
+\item Seleccionar una cuenta a través de una lista de los jefes de equipo/trabajadores que no tiene asignado.
+\item Dar click en el botón "Agregar".
+\item Seleccionar una cuenta a través de una lista de los jefes de equipo/trabajadores que tiene asignados.
+\item Dar click en el botón "Eliminar"
+\item Dar click en el botón "Guardar".
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Post-condición: & \begin{enumerate}
+\item Se Eliminara o actualizara la cuenta que se halla seleccionado en la base de datos.
+\item Se mostrara un mensaje del resultado de la transacción.
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Excepciones: & \begin{enumerate}
+\item Si no existe el usuario se mostrará un mensaje de error.
+\end{enumerate} \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Referencias: & RE-3, RE-4\\ 
+\hline 
+\end{tabular} 
+\\
+
+\cleardoublepage
+
+
+
+
+\section{Referencias}
+Sommerville, I. (2005). Ingeniería del software. Pearson Educación.
+
+
+\end{document}

@@ -1,0 +1,324 @@
+#####################################################
+R1
+#####################################################
+switch
+####################################################	
+enable
+vlan database
+vlan 10 name voz
+vlan 2 name datos1
+vlan 3 name datos2
+vlan 4 name datos3
+exit
+
+conf t
+interface fa0/2
+switchport mode access
+switchport access vlan 2
+exit
+
+interface fa0/3
+switchport mode access
+switchport access vlan 3
+exit
+
+interface fa0/4
+switchport mode access
+switchport access vlan 4
+exit
+
+interface range fa0/2-4
+switchport voice vlan 10
+exit
+
+
+interface fa0/1
+switchport mode trunk
+exit
+
+##########################################
+router
+##########################################
+
+enable
+conf t
+interface fa0/0	
+no shutdown
+exit
+
+ip dhcp pool voz1
+network 20.0.1.0 255.255.255.0
+default-router 20.0.1.254
+option 150 ip 20.0.1.254
+exit
+
+ip dhcp pool datos1
+network 11.0.128.0 255.255.128.0
+default-router 11.0.255.254
+exit
+
+ip dhcp pool datos2
+network 12.0.1.0 255.255.255.0
+default-router 12.0.1.254
+exit
+
+ip dhcp pool datos3
+network 13.0.0.16 255.255.255.240
+default-router 13.0.0.30
+exit
+
+
+interface f0/0.10
+encapsulation dot1Q 10
+ip address 20.0.1.254 255.255.255.0
+exit
+
+interface f0/0.2
+encapsulation dot1Q 2
+ip address 11.0.255.254 255.255.128.0
+exit
+
+interface f0/0.3
+encapsulation dot1Q 3
+ip address 12.0.1.254 255.255.255.0
+exit
+
+interface f0/0.4
+encapsulation dot1Q 4
+ip address 13.0.0.30 255.255.255.240
+exit
+
+telephony-service
+max-dn 3
+max-ephones 3
+ip source-address 20.0.1.254 port 2000
+auto assign 1 to 3
+exit
+
+ephone-dn 1
+number 101
+ephone-dn 2
+number 102
+ephone-dn 3
+number 103
+exit
+
+interface Se0/2/0
+ip address 9.0.0.5 255.255.255.252
+clock rate 56000
+no shu
+exit
+
+interface Se0/2/1
+ip address 9.0.0.17 255.255.255.252
+clock rate 56000
+no shu
+exit
+
+
+
+########################################################
+Static
+#######################################################
+
+
+
+
+
+
+
+#######################################################
+RIP
+#######################################################
+
+router rip
+version 2
+network 11.0.128.0
+network 12.0.1.0
+network 13.0.0.16
+network 9.0.0.4
+network 9.0.0.16
+no auto-summary
+
+
+#######################################################
+eigrp 103
+#######################################################
+
+router eigrp 103
+network 11.0.128.0 0.0.127.255
+network 12.0.1.0 0.0.0.255
+network 13.0.0.16 0.0.0.15
+network 9.0.0.4 0.0.0.3
+network 9.0.0.16 0.0.0.3
+no auto-summary
+
+
+#######################################################
+OSPF 100 area 4
+#######################################################
+
+router ospf 100
+network 11.0.128.0 0.0.127.255 area 4
+network 12.0.1.0 0.0.0.255 area 4
+network 13.0.0.16 0.0.0.15 area 4
+network 9.0.0.4 0.0.0.3 area 4
+network 9.0.0.16 0.0.0.3 area 4
+
+#######################################################
+
+dial-peer voice 150 voip 
+destination-pattern 15.
+session target ipv4:9.0.0.6
+exit
+
+dial-peer voice 200 voip 
+destination-pattern 20.
+session target ipv4:9.0.0.25
+exit
+
+dial-peer voice 250 voip 
+destination-pattern 25.
+session target ipv4:9.0.0.37
+exit
+
+dial-peer voice 300 voip 
+destination-pattern 30.
+session target ipv4:9.0.0.41
+exit
+
+
+dial-peer voice 400 voip 
+destination-pattern 40.
+session target ipv4:9.0.0.10
+exit
+
+dial-peer voice 450 voip 
+destination-pattern 45.
+session target ipv4:9.0.0.50
+exit
+
+dial-peer voice 500 voip 
+destination-pattern 50.
+session target ipv4:9.0.0.73
+exit
+
+dial-peer voice 550 voip 
+destination-pattern 55.
+session target ipv4:9.0.0.77
+exit
+
+dial-peer voice 600 voip 
+destination-pattern 60.
+session target ipv4:9.0.0.81
+exit
+
+dial-peer voice 700 voip 
+destination-pattern 70.
+session target ipv4:9.0.0.93
+exit
+
+dial-peer voice 800 voip 
+destination-pattern 80.
+session target ipv4:9.0.0.62
+exit
+
+dial-peer voice 900 voip 
+destination-pattern 90.
+session target ipv4:9.0.0.90
+exit
+
+
+
+
+
+
+
+
+
+
+vlan 10
+name 10
+exit
+
+vlan 20
+name 20
+exit
+
+vlan 30
+name 30
+exit
+
+vlan 40
+name 40
+exit
+
+vlan 50
+name 50
+exit
+
+vlan 5
+name 5
+exit
+
+do sh vlan brief
+
+
+
+telephony-service
+max-dn 1
+max-ephones 1
+ip source-address 5.1.255.254 port 2000
+auto assign 1 to 1
+exit
+
+ephone-dn 1
+number 101
+exit
+
+dial-peer voice 100 voip 
+destination-pattern 10.
+session target ipv4:200.14.15.185
+exit
+
+
+ip route 11.0.0.0 255.254.0.0 1.0.0.6
+
+ip route 11.0.0.0 255.254.0.0 200.14.15.177 
+ip route 12.0.0.0 255.248.0.0 200.14.15.177 
+ip route 13.0.0.0 255.248.0.0 200.14.15.177 
+ip route 14.0.0.0 255.254.0.0 200.14.15.177 
+ip route 15.0.0.0 255.240.0.0 200.14.15.177
+ip route 5.0.0.0 255.248.0.0 200.14.15.177
+
+ip route 11.0.0.0 255.254.0.0 1.0.0.9
+ip route 12.0.0.0 255.248.0.0 1.0.0.9 
+ip route 13.0.0.0 255.248.0.0 1.0.0.9
+ip route 14.0.0.0 255.254.0.0 1.0.0.9
+ip route 15.0.0.0 255.240.0.0 1.0.0.9
+ip route 5.0.0.0 255.248.0.0 1.0.0.9
+
+
+
+ip route 11.0.0.0 255.254.0.0 1.0.0.22
+ip route 12.0.0.0 255.248.0.0 1.0.0.22
+ip route 13.0.0.0 255.248.0.0 1.0.0.22
+
+ip route 200.14.15.0 255.255.255.0 1.0.0.6
+ip route 200.14.15.0 255.255.255.0 200.14.15.177
+ip route 200.14.15.0 255.255.255.0 1.0.0.22
+ip route 200.14.15.0 255.255.255.0 1.0.0.9
+
+ip route 11.0.0.0 255.254.0.0 1.0.0.14
+ip route 12.0.0.0 255.248.0.0 1.0.0.14
+ip route 13.0.0.0 255.248.0.0 1.0.0.14
+ip route 14.0.0.0 255.254.0.0 1.0.0.14
+ip route 15.0.0.0 255.240.0.0 1.0.0.14
+ip route 5.0.0.0 255.248.0.0 1.0.0.14
+ip route 200.14.15.0 255.255.255.0 1.0.0.14
+
+
+ip route 1.0.0.0 255.255.255.0 1.0.0.14
+ip route 1.0.0.0 255.255.255.0 200.14.15.177
+ip route 1.0.0.0 255.255.255.0 1.0.0.9
+ip route 1.0.0.0 255.255.255.0 1.0.0.6
